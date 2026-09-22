@@ -7,7 +7,8 @@ RUN chmod +x gradlew
 COPY src ./src
 RUN ./gradlew --no-daemon test bootJar
 
-# Only the runtime and application are included in the final image.
+# The application JAR includes H2 and generated OpenAPI/Swagger UI support.
+# H2 runs in memory inside Java; no database service or volume is needed.
 FROM docker.io/library/eclipse-temurin:25-jre
 WORKDIR /app
 COPY --from=build /workspace/build/libs/app.jar ./app.jar
