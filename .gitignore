@@ -6,6 +6,11 @@
 !/.dockerignore
 !/.java-version
 
+# Track only the generic developer guide in the references directory.
+!/.references/
+/.references/*
+!/.references/development.md
+
 # Generated files and build output.
 /bin/
 HELP.md
